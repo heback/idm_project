@@ -14,25 +14,51 @@ name: str = "Alice"  # 문자열
 # 출력
 print(x)
 print(y)
-print(name)
+print(f'{name}')
 
 # 연산자
 
 # 산술 연산자
 a = 10
 b = 3
-print(a + b)  # 덧셈
-print(a - b)  # 뺄셈
-print(a * b)  # 곱셈
-print(a / b)  # 나눗셈
-print(a % b)  # 나머지
-print(a ** b) # 거듭제곱
+print(a + b)    # 덧셈
+print(a - b)    # 뺄셈
+print(a * b)    # 곱셈
+print(a / b)    # 나눗셈
+print(a // b)   # 몫
+print(a % b)    # 나머지
+print(a ** b)   # 거듭제곱
 
 # 비교 연산자
 print(a == b)  # 같다
 print(a != b)  # 다르다
 print(a > b)   # 크다
 print(a < b)   # 작다
+
+# 논리 연산자 and, or
+x = 11
+print(x < 5 and x < 10)         # Returns True if both statements are true
+print(x < 5 or x < 4)           # Returns True if one of the statements is true
+print(not(x < 5 and x < 10))    # Reverse the result, returns False if the result is true
+
+# 식별 연산자 is, is not
+# Returns True if both variables are the same object
+
+x = ["apple", "banana"]
+y = ["apple", "banana"]
+z = x
+# returns True because z is the same object as x
+print(x is z)
+
+# returns False because x is not the same object as y, even if they have the same content
+print(x is y)
+
+# to demonstrate the difference betweeen "is" and "=="
+# "==" : this comparison returns True because x is equal to y
+print(x == y)
+
+# 포함 연산자 in
+
 
 # 입력과 출력
 
