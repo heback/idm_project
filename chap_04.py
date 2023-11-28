@@ -64,6 +64,11 @@ class Person:
 # Python에서는 __del__이 이에 해당합니다.
 
 class Person:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
     def __del__(self):
         print(f"{self.name} 객체가 소멸됩니다.")
 
@@ -72,6 +77,11 @@ class Person:
 # print() 함수에 객체를 넘겼을 때 어떻게 출력될지 정의합니다.
 
 class Person:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
     def __str__(self):
         return f"Person({self.name}, {self.age})"
 
@@ -80,6 +90,11 @@ class Person:
 # 인터프리터에서 객체를 입력하면 이 메소드가 호출됩니다.
 
 class Person:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
     def __repr__(self):
         return f"Person('{self.name}', {self.age})"
 

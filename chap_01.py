@@ -37,28 +37,36 @@ print(a < b)   # 작다
 
 # 논리 연산자 and, or
 x = 11
-print(x < 5 and x < 10)         # Returns True if both statements are true
-print(x < 5 or x < 4)           # Returns True if one of the statements is true
-print(not(x < 5 and x < 10))    # Reverse the result, returns False if the result is true
+print(x < 5 and x < 10)         # 두 문이 모두 True 인 경우 True 를 반환
+print(x < 5 or x < 4)           # 두 문 중 하나가 True 인 경우 True 를 반환
+print(not(x < 5 and x < 10))    # 결과를 반전하고, 결과가 True 이면 False 를 반환
 
 # 식별 연산자 is, is not
-# Returns True if both variables are the same object
+# 두 변수가 모두 동일한 객체이면 True 를 반환
 
 x = ["apple", "banana"]
 y = ["apple", "banana"]
 z = x
-# returns True because z is the same object as x
+# z가 x와 동일한 객체이므로 True 를 반환
 print(x is z)
 
-# returns False because x is not the same object as y, even if they have the same content
+# 내용이 동일하더라도 x가 y와 동일한 객체가 아니기 때문에 False 를 반환
 print(x is y)
 
-# to demonstrate the difference betweeen "is" and "=="
-# "==" : this comparison returns True because x is equal to y
+# "is"와 "=="의 차이점을 보여주기 위해
+# "==" : 이 비교는 x가 y와 같기 때문에 True 를 반환
 print(x == y)
 
 # 포함 연산자 in
+# 값이 "banana"인 시퀀스가 리스트에 있으므로 True 를 반환
+x = ["apple", "banana"]
+print("banana" in x)
 
+y = "banana"
+print('ba' in y)
+
+# 값이 "pineapple"인 시퀀스가 리스트에 없기 때문에 True 를 반환
+print("pineapple" not in x)
 
 # 입력과 출력
 
@@ -75,10 +83,17 @@ print(my_list[-1]) # 마지막 요소
 
 # 리스트 수정
 my_list[1] = 10
+my_list[0:2] = [2, 3]
 
 # 리스트에 요소 추가
 my_list.append(6)
+my_list.insert(0, 2)
 
+# 리스트 삭제
+my_list.remove(2)   # 아이템이 2인 항목 삭제
+my_list.pop(2)      # index 2인 아이템 삭제
+del my_list[2]      # index 2인 아이템 삭제
+del my_list         # my_list  전체 삭제
 
 # 튜플
 
@@ -93,9 +108,11 @@ my_tuple = (1, 2, 3)
 # 딕셔너리 생성 및 접근
 my_dict = {'apple': 3, 'banana': 5, 'orange': 2}
 print(my_dict['apple'])  # 'apple'의 값을 출력
+print(my_dict.get('apple'))
 
 # 딕셔너리에 새로운 키-값 쌍 추가
 my_dict['grape'] = 10
+my_dict.update({'pineapple': 2})
 
 # 집합
 

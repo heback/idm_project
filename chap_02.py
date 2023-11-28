@@ -7,8 +7,16 @@
 def greet():
     print("안녕하세요!")
 
+
 # 함수 호출
 greet()
+
+
+# 매개변수와 결과를 반환하는 함수
+def greet(name):
+    return f"안녕, {name}!"
+
+print(greet("철수"))
 
 
 # 매개변수가 다양한 함수 예제
@@ -27,6 +35,27 @@ def introduce(name, age=0, *interests):
 introduce("지민", 25, "축구", "음악", "여행")
 # 이 예제에서 name은 필수 매개변수, age는 기본값이 있는 선택적 매개변수,
 # 그리고 interests는 가변 매개변수로, 여러 개의 인자를 튜플로 받아 처리합니다.
+
+
+# 키워드 매개변수
+def describe_pet(animal_type, pet_name):
+    return f"나의 {animal_type}의 이름은 {pet_name}입니다."
+
+# 함수를 호출할 때 매개변수의 이름을 명시적으로 지정할 수 있습니다.
+# 이를 통해 매개변수의 순서를 바꿀 수 있습니다.
+print(describe_pet(animal_type="햄스터", pet_name="해리"))
+print(describe_pet(pet_name="해리", animal_type="햄스터"))
+
+
+# **키워드 가변 매개변수 (kwargs):
+# **kwargs를 사용하면 함수가 임의의 수의 키워드 매개변수를 받을 수 있습니다.
+def build_profile(**user_info):
+    return user_info
+
+
+user_profile = build_profile(name="철수", age=30, city="서울")
+print(user_profile)  # {'name': '철수', 'age': 30, 'city': '서울'}
+
 
 # lambda를 사용한 간단한 연산 예제
 # lambda 함수는 이름 없이 간단한 함수를 한 줄로 표현할 수 있게 해주는 파이썬의 기능입니다.
