@@ -12,7 +12,7 @@ class Task(ft.UserControl):
         self.edit_view = None
         self.display_view = None
         self.edit_name = None
-        self.display_task = None
+        self.display_task = ft.Row()
         # 상태
         self.completed = False
         # 할일
@@ -21,12 +21,23 @@ class Task(ft.UserControl):
         self.task_status_change = task_status_change
         # 삭제 콜백
         self.task_delete = task_delete
+        # 텍스트 스타일 동적 적용을 위한 사전 정의
+        self.text_style_cancel = ft.TextStyle(
+            decoration = ft.TextDecoration.LINE_THROUGH
+        )
+        self.text_style_normal = ft.TextStyle(
+            decoration = ft.TextDecoration.NONE
+        )
 
     def build(self):
-        self.display_task = ft.Checkbox(
-            value=False,
-            label=self.task_name,
-            on_change=self.status_changed
+        self.display_task = ft.Row(
+            controls = [
+                ft.Checkbox(
+                    value=False,
+                    on_change=self.status_changed
+                ),
+                ft.Text(spans = [ft.TextSpan(self.task_name)])
+            ]
         )
         self.edit_name = ft.TextField(expand=1)
 
@@ -72,20 +83,26 @@ class Task(ft.UserControl):
             self.edit_view])
 
     def edit_clicked(self, e):
-        self.edit_name.value = self.display_task.label
+        self.edit_name.value = self.display_task.controls[1].spans[0].value
         self.display_view.visible = False
         self.edit_view.visible = True
         self.update()
 
     def save_clicked(self, e):
-        self.display_task.label = self.edit_name.value
+        self.display_task.controls[1].spans[0].value = self.edit_name.value
         self.display_view.visible = True
         self.edit_view.visible = False
         self.update()
 
     def status_changed(self, e):
-        self.completed = self.display_task.value
+        self.completed = self.display_task.controls[0].value
+        if not self.completed:
+            self.display_task.controls[1].spans[0].style = self.text_style_normal
+        else:
+            self.display_task.controls[1].spans[0].style = self.text_style_cancel
+
         self.task_status_change()
+        self.update()
 
     def delete_clicked(self, e):
         self.task_delete(self)

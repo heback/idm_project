@@ -1,51 +1,53 @@
 import flet as ft
-from flet import (Page, Column, Row, Text, TextField,
-                  FloatingActionButton, Tabs, Tab, icons,
-                  ElevatedButton)
 
 
+def main(page: ft.Page):
 
-def main(page: Page):
+    # Task 컨트롤 목록을 가지는 레이아웃
+    tasks = ft.Column()
 
-    view = Column(
+    view = ft.Column(
         width=600,
         controls=[
-            Row(
+            ft.Row(
                 controls = [
-                    Text('Todos'),
+                    ft.Text('Todos'),
                 ]
             ),
-            Row(
+            ft.Row(
                 controls = [
-                    TextField(
+                    ft.TextField(
                         hint_text = "Whats needs to be done?",
                         expand = True
                     ),
-                    FloatingActionButton(icon = icons.ADD)
+                    ft.FloatingActionButton(icon = ft.icons.ADD)
                 ]
             ),
-            Column(
+            ft.Column(
                 controls = [
-                    Tabs(
+                    ft.Tabs(
                         tabs = [
-                            Tab(text = 'all'),
-                            Tab(text = 'active'),
-                            Tab(text = 'completed')
+                            ft.Tab(text = 'all'),
+                            ft.Tab(text = 'active'),
+                            ft.Tab(text = 'completed')
                         ]
                     ),
-                    Column(
+                    ft.Column(
                         controls = []
                     )
                 ]
             ),
-            Row(
+            ft.Row(
                 controls = [
-                    Text('1 active item(s) left'),
-                    ElevatedButton('Clear completed')
+                    ft.Text('1 active item(s) left'),
+                    ft.ElevatedButton('Clear completed')
                 ]
             )
         ],
     )
+
+    def add_clicked(e):
+        pass
 
     page.horizontal_alignment = "center"
     page.add(view)

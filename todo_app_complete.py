@@ -125,7 +125,7 @@ class TodoApp(UserControl):
         self.new_task.value = ""
         self.update()
 
-    def task_status_change(self, task):
+    def task_status_change(self):
         self.update()
 
     def task_delete(self, task):
